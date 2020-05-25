@@ -23,9 +23,10 @@ with open(book_path, 'r') as book_object:
 # print(word_set)
 
 """ count character frequency (non-space) """
+word_exception = ['，', '。', '：', '“', '”', '？', '！', '.', '?', ',', '!']
 frequency = {}
 for word in book_text:
-    if word != ' ':
+    if word not in word_exception:
         if word not in frequency:
             frequency[word] = 1
         else:
