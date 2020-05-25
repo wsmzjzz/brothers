@@ -18,11 +18,11 @@ with open(book_path, 'r') as book_object:
         book_text += line.strip()
 # print(len(book_text))
 # print(book_text[5800:6000])
-text = "你知道啥玩意儿"
-frequency = {}
+# text = "你知道啥玩意儿"
 # word_set = set(book_text)
 # print(word_set)
 
+frequency = {}
 for word in book_text:
     """ count character frequency (non-space) """
     if word != ' ':
@@ -32,3 +32,11 @@ for word in book_text:
             frequency[word] += 1
 # print(frequency['走'])
 print(len(frequency))
+
+""" count how many times a name appears """
+appear_times = {}
+for name in names:
+    appear_times[name] = book_text.count(name)
+
+# for name, times in appear_times.items():
+#     print(name + ' appears ' + str(times) + ' times.')
