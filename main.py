@@ -22,9 +22,9 @@ with open(book_path, 'r') as book_object:
 # word_set = set(book_text)
 # print(word_set)
 
+""" count character frequency (non-space) """
 frequency = {}
 for word in book_text:
-    """ count character frequency (non-space) """
     if word != ' ':
         if word not in frequency:
             frequency[word] = 1
