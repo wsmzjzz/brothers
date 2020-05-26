@@ -1,4 +1,4 @@
-""" Chinese Character Counter """
+""" 这部分获取全书信息 """
 
 # import collections
 
@@ -24,18 +24,21 @@ with open(book_path, 'r') as book_object:
 
 """ count character frequency (non-space) """
 word_exception = ['，', '。', '：', '“', '”', '？', '！', '.', '?', ',', '!']
-frequency = {}
+frequency = {} #-- 汉字出现频率
+word_set = [] #-- 汉字集合
 for word in book_text:
     if word not in word_exception:
         if word not in frequency:
             frequency[word] = 1
+            word_set.append(word)
         else:
             frequency[word] += 1
 # print(frequency['走'])
-print(len(frequency))
+# print(len(frequency))
+# print(word_set[200:250])
 
 """ count how many times a name appears """
-appear_times = {}
+appear_times = {} #-- 人名出现次数
 for name in names:
     appear_times[name] = book_text.count(name)
 
