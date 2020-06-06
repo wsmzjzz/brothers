@@ -7,7 +7,8 @@ from get_data import book_text, comma_text, name_string
 import math
 import matplotlib.pyplot as plt
 import numpy as np
-from wordcloud import WordCloud
+from wordcloud import WordCloud, ImageColorGenerator  
+from PIL import Image  
 # import jieba
 
 # print(space_text[:100])
@@ -15,13 +16,19 @@ from wordcloud import WordCloud
 # print(list(word_list)[:100])
 # print(name_string[:200])
 # print('-------')
+shui_path = 'data/shui.jpg'
+shui_mask = np.array(Image.open(shui_path))
+shui_color = ImageColorGenerator(shui_mask)
+hu_path = 'data/hu.jpg'
+hu_mask = np.array(Image.open(hu_path))
+hu_color = ImageColorGenerator(hu_mask)
 
 plt.figure(figsize = (10, 6))
 
 c_font = '/System/Library/Fonts/PingFang.ttc'
 #-- 一百单八将名字词云
 name_cloud = WordCloud(collocations=False,background_color="white",
-                        width=1000, height=860,
+                        width=1000, height=860,mask=shui_mask,
                         font_path=c_font, margin=2).generate(name_string)
 plt.subplot(121)
 plt.imshow(name_cloud)
@@ -30,6 +37,7 @@ plt.axis("off")
 #-- 全文汉字单个字词云
 word_cloud = WordCloud(collocations=False,background_color="white",
                         width=1000, height=860,regexp=r"\w[\w']*",
+                        mask=hu_mask,
                         font_path=c_font, margin=2).generate(comma_text)
 plt.subplot(122)
 plt.imshow(word_cloud)
