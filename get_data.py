@@ -10,6 +10,13 @@ def find_chinese(file):
     # print(chinese)
 
 
+def add_comma(text):
+    added_text = ''
+    for word in text:
+        added_text += word + ','
+    return added_text
+
+
 book_path = 'data/book.txt'
 names_path = 'data/names.txt'
 
@@ -26,6 +33,7 @@ with open(book_path, 'r') as book_object:
         book_text += line.strip()
 
 book_text = str(find_chinese(book_text))
+comma_text = add_comma(book_text)
 # print(book_text[19800:20000])
 
 # print(len(book_text))
@@ -60,6 +68,8 @@ appear_times = {} #-- 人名出现次数
 for name in names:
     appear_times[name] = book_text.count(name)
     name_string += (name + ',') * appear_times[name]
+# print(name_string[:200])
 # for name, times in appear_times.items():
 #     print(name + ' appears ' + str(times) + ' times.')
 # print(name_string[10000:10200])
+# print('----')
