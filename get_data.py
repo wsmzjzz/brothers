@@ -68,6 +68,8 @@ appear_times = {} #-- 人名出现次数
 for name in names:
     appear_times[name] = book_text.count(name)
     name_string += (name + ',') * appear_times[name]
+
+
 # print(name_string[:200])
 # for name, times in appear_times.items():
 #     print(name + ' appears ' + str(times) + ' times.')
