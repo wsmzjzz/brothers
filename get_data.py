@@ -58,9 +58,12 @@ for word in book_text:
 # print(frequency['走'])
 # print(len(frequency))
 # print(word_set[200:250])
-# for word, times in frequency.items():
-#     if times > 6000:
-#         print(word)
+cnt = 0
+for word, times in frequency.items():
+    if times > 10:
+        # print(word)
+        cnt += 1
+print(cnt)
 
 """ count how many times a name appears """
 name_string = ''
